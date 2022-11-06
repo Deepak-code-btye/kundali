@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------google---font---------- */
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800&display=swap");
+
+/* swiper */
+.swiper-container {
+  width: 345px !important;
+}
+.swiper-wrapper {
+  display: flex;
+  /* width: 345px !important; */
+}
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide p {
+  /* display: block; */
+  width: 345px !important;
+}
+
+.swiper-container {
+  /* width: 100%; */
+  height: 300px;
+  margin: 20px auto;
+}
+.append-buttons {
+  text-align: center;
+  margin-top: 20px;
+}
+.swiper-pagination {
+  display: none;
+  /* justify-content: center; */
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.OrLine h6:before{
+  content: "";
+  width: 90px;
+  height: 1px; 
+  display: block;
+  background: #000000;
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+.OrLine h6:after{
+  content: "";
+  width: 90px;
+  height: 1px;
+  display: block;
+  background: #000000;
+  position: absolute;
+  top: 50%;
+  right:0;
+}

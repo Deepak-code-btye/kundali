@@ -25,7 +25,6 @@ const Payment = () => {
 
   const onSubmit = (data) => {
     paymentdata(data);
-    navigate("/status/:orderId");
   };
   return (
     <div>

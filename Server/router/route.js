@@ -243,7 +243,7 @@ router.post("/callback", (req, res) => {
             await statusdata.save();
           }
 
-          console.log("yaha tak aa gaye");
+          console.log(result.ORDERID);
 
           res.redirect(`http://localhost:3000/status/${result.ORDERID}`);
         });
@@ -255,14 +255,19 @@ router.post("/callback", (req, res) => {
   } else {
     console.log("Checksum Mismatched");
   }
-  // }
-  // );
 });
-router.get("/statusdata/:id", async (req, res) => {
-  const { id } = req.params;
-  console.log(id);
-  const getId = await Status.findById(id);
-  return res.status(200).json(getId);
+router.get("/status", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const getId = await Status.find();
+    if (!getId) {
+      res.status(404).json({ msg: "failied" });
+    } else {
+      return res.status(200).json(getId);
+    }
+  } catch (err) {
+    res.send(err);
+  }
 });
 
 router.post("/payment", (req, res) => {

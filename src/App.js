@@ -39,7 +39,7 @@ function App() {
             <Route exact path="user-form" element={<UserDetails />} />
             <Route exact path="choose" element={<Choosepayment />} />
             <Route exact path="payment" element={<Payment />} />
-            <Route exact path="status/:orderId" element={<Success />} />
+            <Route exact path="status/:id" element={<Success />} />
           </Routes>
         </>
       ) : (

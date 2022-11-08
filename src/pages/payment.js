@@ -35,7 +35,7 @@ const Payment = () => {
       />
       <div className="mx-auto px-6 py-5">
         <h1 className="font-Raleway text-black text-xl text-center ">
-          Choose Kundali Types
+          welcome to Pytam Account
         </h1>
         <hr className=" mx-auto bg-pink-300 drop-shadow-md bg-opacity-50 mt-2 rounded-md py-[2px] mb-5" />
       </div>

@@ -1,5 +1,4 @@
 import Home from "./pages/Home";
-import Kundali from "./pages/Kundali";
 import Success from "./pages/paytmStatus";
 import UserDetails from "./pages/UserDetails";
 import { Routes, Route, Navigate } from "react-router-dom";
@@ -40,7 +39,7 @@ function App() {
             <Route exact path="user-form" element={<UserDetails />} />
             <Route exact path="choose" element={<Choosepayment />} />
             <Route exact path="payment" element={<Payment />} />
-            {/* <Route exact path="status" element={<Payment />} /> */}
+            <Route exact path="status/:id" element={<Success />} />
           </Routes>
         </>
       ) : (

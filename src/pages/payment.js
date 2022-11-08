@@ -6,8 +6,9 @@ import Choose from "../components/Choose";
 import { useForm } from "react-hook-form";
 import { paymentdata } from "../utils";
 import { useStateValue } from "../context";
-
+import { useNavigate } from "react-router-dom";
 const Payment = () => {
+  var navigate = useNavigate();
   const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0();
   const [{ basket }, dispatch] = useStateValue();
   const amount = basket[0];

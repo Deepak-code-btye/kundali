@@ -3,6 +3,7 @@ const router = express.Router();
 const Order = require("../models/order");
 const User = require("../models/users");
 const Product = require("../models/Products");
+const Status = require("../models/Status");
 const jwksClient = require("jwks-rsa");
 const { expressjwt: jwt } = require("express-jwt");
 const axios = require("axios");
@@ -204,20 +205,45 @@ router.post("/callback", (req, res) => {
           response += chunk;
         });
 
-        post_res.on("end", function () {
+        post_res.on("end", async function () {
           let result = JSON.parse(response);
           if (result.STATUS === "TXN_SUCCESS") {
-            //store in db
-            // db.collection("payments")
-            //   .doc("mPDd5z0pNiInbSIIotfj")
-            //   .update({
-            //     paymentHistory:
-            //       firebase.firestore.FieldValue.arrayUnion(result),
-            //   })
-            //   .then(() => console.log("Update success"))
-            //   .catch(() => console.log("Unable to update"));
-            console.log("yaha tak aa gaye");
+            const {
+              TXNID,
+              BANKTXNID,
+              ORDERID,
+              TXNAMOUNT,
+              STATUS,
+              TXNTYPE,
+              GATEWAYNAME,
+              RESPCODE,
+              RESPMSG,
+              BANKNAME,
+              MID,
+              PAYMENTMODE,
+              REFUNDAMT,
+              TXNDATE,
+            } = result;
+            const statusdata = new Status({
+              TXNID,
+              BANKTXNID,
+              ORDERID,
+              TXNAMOUNT,
+              STATUS,
+              TXNTYPE,
+              GATEWAYNAME,
+              RESPCODE,
+              RESPMSG,
+              BANKNAME,
+              MID,
+              PAYMENTMODE,
+              REFUNDAMT,
+              TXNDATE,
+            });
+            await statusdata.save();
           }
+
+          console.log("yaha tak aa gaye");
 
           res.redirect(`http://localhost:3000/status/${result.ORDERID}`);
         });
@@ -231,6 +257,12 @@ router.post("/callback", (req, res) => {
   }
   // }
   // );
+});
+router.get("/statusdata/:id", async (req, res) => {
+  const { id } = req.params;
+  console.log(id);
+  const getId = await Status.findById(id);
+  return res.status(200).json(getId);
 });
 
 router.post("/payment", (req, res) => {
